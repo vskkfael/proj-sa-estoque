@@ -60,8 +60,7 @@ public class Fornecedor {
     // Padrozina os dados
     @Override
     public String toString() {
-        return String.format("ID: %-2d | Razão Social: %-5.80s | CNPJ: %-18s | Contato: %-15s",
-            idFornecedor, razaoSocial, formatarCnpj(numCNPJ), formatarTel(numTel));
+        return String.format("ID: %-2d | Razão Social: %-5.80s | CNPJ: %-18s | Contato: %-15s", idFornecedor, razaoSocial, formatarCnpj(numCNPJ), formatarTel(numTel));
     }
 
     // Métodos para formatar os dados
