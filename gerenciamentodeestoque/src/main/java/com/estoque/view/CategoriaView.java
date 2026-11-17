@@ -25,6 +25,7 @@ public class CategoriaView {
                 System.out.println("2. Listar Categoria");
                 System.out.println("3. Atualizar Categoria");
                 System.out.println("4. Excluir Categoria");
+                System.out.println("5. Buscar por ID");
                 System.out.println("0. Sair");
                 System.out.print("Escolha uma opção: ");
         
@@ -49,7 +50,7 @@ public class CategoriaView {
 
    public void cadastrar() throws SQLException {
         System.out.println("\n--- Cadastrar Categoria ---");
-        System.out.print("Nome da categoria: ");
+        System.out.print("Categoria: ");
         String nmCategoria = scanner.nextLine();
 
         System.out.print("Descrição breve: ");
