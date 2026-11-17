@@ -22,7 +22,9 @@ public class Produto {
         this.estoqueMin = estoqueMin;
     }
     
-    public Produto(String nmProduto, Integer qtProduto, Integer estoqueMin) {
+    public Produto(Integer idCategoria, Integer idFornecedor, String nmProduto, Integer qtProduto, Integer estoqueMin) {
+        this.idCategoria = idCategoria;
+        this.idFornecedor = idFornecedor;
         this.nmProduto = nmProduto;
         this.qtProduto = qtProduto;
         this.estoqueMin = estoqueMin;
