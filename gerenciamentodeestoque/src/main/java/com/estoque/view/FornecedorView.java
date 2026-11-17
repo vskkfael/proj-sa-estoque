@@ -36,7 +36,7 @@ public class FornecedorView {
                     case 2 -> listar();
                     case 3 -> atualizar();
                     case 4 -> excluir();
-                    case 5 -> buscarId(opcao);
+                    case 5 -> buscarCNPJ(opcao);
                     case 0 -> System.out.println("Saindo do sistema...");
                     default -> System.out.println("Opção inválida! Tente novamente!");
                 }
@@ -131,8 +131,8 @@ public class FornecedorView {
         }
    }
 
-   public void buscarId(int id) throws SQLException {
-    System.out.println("\n--- Buscar por ID---");
+   public void buscarCNPJ(int cnpj) throws SQLException {
+    System.out.println("\n--- Buscar por CNPJ---");
     System.out.print("Informe o CNPJ que deseja consultar: ");
     String cnpjBusca = scanner.nextLine();
     String cnpjSucesso = cnpjBusca.replaceAll("\\D", "");

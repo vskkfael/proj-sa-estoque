@@ -68,4 +68,23 @@ public class CategoriaDAO {
                 return stmt.executeUpdate() > 0;
             }
     }
+
+    public Categoria buscarPorID(int id) throws SQLException {
+        String sql = "SELECT * FROM tb_sge_categoria WHERE id_categoria = ?";
+
+        try(Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+
+            try(ResultSet rs = stmt.executeQuery()) {
+                if(rs.next()){
+                    return new Categoria(
+                        rs.getInt("id_categoria"),
+                        rs.getString("nm_categoria"),
+                        rs.getString("ds_categoria"));
+                }
+            }
+        }
+        return null;
+    }
 }

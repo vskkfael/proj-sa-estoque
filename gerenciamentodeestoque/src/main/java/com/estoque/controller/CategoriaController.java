@@ -18,16 +18,20 @@ public class CategoriaController {
         CategoriaDAO.salvar(categoria);
     }
 
-    public List<Categoria> listarCategorias() throws SQLException {
+    public List<Categoria> listarCategoria() throws SQLException {
         return categoriaDAO.listarTodos();
     }
 
-    public boolean atualizarFornecedor(int idCategoria, String nomeCategoria, String dsCategoria) throws SQLException {
+    public boolean atualizarCategoria(int idCategoria, String nomeCategoria, String dsCategoria) throws SQLException {
         Categoria categoria = new Categoria(idCategoria, nomeCategoria, dsCategoria);
         return categoriaDAO.atualizar(categoria);
     }
 
-    public boolean excluirFornecedor(int idFornecedor) throws SQLException {
+    public boolean excluirCategoria(int idFornecedor) throws SQLException {
         return categoriaDAO.excluir(idFornecedor);
+    }
+
+    public Categoria buscarPorID(int id) throws SQLException {
+        return categoriaDAO.buscarPorID(id);
     }
 }   
