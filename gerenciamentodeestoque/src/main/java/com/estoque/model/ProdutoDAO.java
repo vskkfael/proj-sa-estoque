@@ -68,7 +68,7 @@ public class ProdutoDAO {
     }
 
     public boolean excluir(int id) throws SQLException {
-        String sql = "DELETE FROM tb_sge_fornecedor WHERE id_fornecedor = ?";
+        String sql = "DELETE FROM tb_sge_produto WHERE id_produto = ?";
 
         try(Connection conn = ConnectionFactory.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -77,28 +77,8 @@ public class ProdutoDAO {
             }
     }
 
-    public Fornecedor buscarPorCNPJ(String cnpj) throws SQLException {
-        String sql = "SELECT * from tb_sge_fornecedor WHERE nr_cnpj = ?";
-
-        try(Connection conn = ConnectionFactory.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql)){
-                stmt.setString(1, cnpj);
-
-                try(ResultSet rs = stmt.executeQuery()){
-                    if(rs.next()){
-                        return new Fornecedor(
-                            rs.getInt("id_fornecedor"),
-                            rs.getString("razao_social"),
-                            rs.getString("nr_cnpj"),
-                            rs.getString("nr_tel"));
-                    }
-                }
-            }
-        return null;
-    }
-
-    public Fornecedor buscarPorID(int id) throws SQLException {
-        String sql = "SELECT * FROM tb_sge_fornecedor WHERE id_fornecedor = ?";
+    public Produto buscarPorID(int id) throws SQLException {
+        String sql = "SELECT * FROM tb_sge_produto WHERE id_produto = ?";
 
         try(Connection conn = ConnectionFactory.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -106,11 +86,13 @@ public class ProdutoDAO {
 
             try(ResultSet rs = stmt.executeQuery()) {
                 if(rs.next()){
-                    return new Fornecedor(
+                    return new Produto(
+                        rs.getInt("id_produto"),
+                        rs.getInt("id_categoria"),
                         rs.getInt("id_fornecedor"),
-                        rs.getString("razao_social"),
-                        rs.getString("nr_cnpj"),
-                        rs.getString("nr_tel")
+                        rs.getString("nm_produto"),
+                        rs.getInt("qt_produto"),
+                        rs.getInt("qt_estoque_min")
                     );
                 }
             }
