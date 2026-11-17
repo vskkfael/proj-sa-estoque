@@ -22,8 +22,8 @@ public class ProdutoController {
         return produtoDAO.listarTodos();
     }
 
-    public boolean atualizarProduto(int idProduto, int idCategoria, int idFornecedor, String nmProduto, int qtProduto, int estoqueMin) throws SQLException {
-        Produto produto = new Produto(idProduto, idCategoria, idFornecedor, nmProduto, qtProduto, estoqueMin);
+    public boolean atualizarProduto(int idCategoria, int idFornecedor, String nmProduto, int qtProduto, int estoqueMin) throws SQLException {
+        Produto produto = new Produto(idCategoria, idFornecedor, nmProduto, qtProduto, estoqueMin);
         return produtoDAO.atualizar(produto);
     }
 

@@ -9,7 +9,7 @@ import com.estoque.model.Fornecedor;
 
 public class FornecedorView {
     private final FornecedorController controller;
-   private final Scanner scanner;
+    private final Scanner scanner;
 
    public FornecedorView() {
     this.controller = new FornecedorController();

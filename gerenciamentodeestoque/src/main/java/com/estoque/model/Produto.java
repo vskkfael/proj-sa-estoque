@@ -12,8 +12,7 @@ public class Produto {
 
     }
 
-    public Produto(Integer idProduto, Integer idCategoria, Integer idFornecedor, String nmProduto, Integer qtProduto,
-            Integer estoqueMin) {
+    public Produto(Integer idProduto, Integer idCategoria, Integer idFornecedor, String nmProduto, Integer qtProduto, int estoqueMin) {
         this.idProduto = idProduto;
         this.idCategoria = idCategoria;
         this.idFornecedor = idFornecedor;
@@ -22,7 +21,7 @@ public class Produto {
         this.estoqueMin = estoqueMin;
     }
     
-    public Produto(Integer idCategoria, Integer idFornecedor, String nmProduto, Integer qtProduto, Integer estoqueMin) {
+    public Produto(Integer idCategoria, Integer idFornecedor, String nmProduto, Integer qtProduto, int estoqueMin) {
         this.idCategoria = idCategoria;
         this.idFornecedor = idFornecedor;
         this.nmProduto = nmProduto;
