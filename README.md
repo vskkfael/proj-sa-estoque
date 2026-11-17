@@ -1,1 +1,1 @@
-Desenvolver uma solução voltada ao gerenciamento deestoque empresarial auxiliando os usuários na projeçãodos produtos, viabilizando a integração de recursos que melhoram o reconhecimento dos produtos e suas necessidades.
+Desenvolver uma solução voltada ao gerenciamento de estoque empresarial auxiliando os usuários na projeçãodos produtos, viabilizando a integração de recursos que melhoram o reconhecimento dos produtos e suas necessidades.
