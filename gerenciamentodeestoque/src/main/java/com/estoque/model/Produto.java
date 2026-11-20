@@ -96,6 +96,6 @@ public class Produto {
      
     @Override
     public String toString() {
-        return String.format("ID: %-2d | Categoria: %-5.60s | Fornecedor: %-5.60s | Produto: %-5.80s | Quantidade: %-2d | Situação: %-5.15s", idProduto, nmCategoria, razaoSocial, nmProduto, estoqueMin, situacao);
+        return String.format("ID: %-2d |  Fornecedor: %-5.60s | Categoria: %-5.60s | Produto: %-5.80s | Quantidade: %-2d | Situação: %-5.15s", idProduto, razaoSocial, nmCategoria, nmProduto, estoqueMin, situacao);
     }
 }
