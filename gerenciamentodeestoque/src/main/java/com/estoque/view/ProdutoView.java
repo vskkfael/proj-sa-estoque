@@ -13,7 +13,7 @@ public class ProdutoView {
 
     public ProdutoView() {
         this.controller = new ProdutoController();
-        this.scanner = new Scanner(System.in);
+        this.scanner = new Scanner(System.in, "UTF-8");
     }
 
     public void exibirMenu(){
@@ -79,20 +79,23 @@ public class ProdutoView {
 
    public void atualizar() throws SQLException {
         System.out.println("\n--- Atualizar Produto ---");
-        System.out.print("Informe o ID do produto a atualizar: ");
-        int id = Integer.parseInt(scanner.nextLine());
 
-        Produto produtoExistente = controller.buscarPorID(id);
-        if(produtoExistente == null){
-            System.out.println("Produto não encontrado com o ID informado");
+        int id;
+        try {
+            System.out.print("Informe o ID do produto a atualizar: ");
+            id = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("ID inválido. Digite apenas números.");
             return;
         }
 
-        System.out.print("Nova Categoria (" + produtoExistente.getIdCategoria() + "): ");
+        Produto produtoExistente = controller.buscarPorID(id);
+
+        System.out.print("Nova Categoria (" + produtoExistente.getIdCategoria() + " - " + produtoExistente.getNmCategoria() + "): ");
         String entrada = scanner.nextLine().trim();
         int categoria = entrada.isEmpty() ? produtoExistente.getIdCategoria() : Integer.parseInt(entrada);
 
-        System.out.print("Novo Fornecedor (" + produtoExistente.getIdFornecedor() + "): ");
+        System.out.print("Novo Fornecedor (" + produtoExistente.getIdFornecedor() + " - " + produtoExistente.getRazaoSocial() + "): ");
         entrada = scanner.nextLine().trim();
         int fornecedor = entrada.isEmpty() ? produtoExistente.getIdFornecedor() : Integer.parseInt(entrada);
     
@@ -100,12 +103,12 @@ public class ProdutoView {
         entrada = scanner.nextLine().trim();
         String produto = entrada.isEmpty() ? produtoExistente.getNmProduto() : entrada;
 
-        System.out.println("Nova Quantidade (" + produtoExistente.getEstoqueMin() + "): ");
+        System.out.print("Nova Quantidade (" + produtoExistente.getEstoqueMin() + "): ");
         entrada = scanner.nextLine().trim();
         int estoqueMin = entrada.isEmpty() ? produtoExistente.getEstoqueMin() : Integer.parseInt(entrada);
 
 
-        boolean sucesso = controller.atualizarProduto(categoria, fornecedor, produto, estoqueMin);
+        boolean sucesso = controller.atualizarProduto(id, categoria, fornecedor, produto, estoqueMin);
         if(sucesso) {
             System.out.println("Produto atualizado com sucesso!");
         } else {

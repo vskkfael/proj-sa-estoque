@@ -68,8 +68,8 @@ public class ProdutoDAO {
                 stmt.setInt(1, produto.getIdCategoria()); // Foreign Key
                 stmt.setInt(2, produto.getIdFornecedor()); // Foreign Key
                 stmt.setString(3, produto.getNmProduto());
-                stmt.setInt(5, produto.getEstoqueMin());
-                stmt.setInt(6, produto.getIdProduto()); // Primary Key
+                stmt.setInt(4, produto.getEstoqueMin());
+                stmt.setInt(5, produto.getIdProduto()); // Primary Key
                 return stmt.executeUpdate() > 0;
         }
     }

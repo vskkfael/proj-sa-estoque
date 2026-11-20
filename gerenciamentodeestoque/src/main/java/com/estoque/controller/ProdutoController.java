@@ -15,15 +15,15 @@ public class ProdutoController {
 
     public void cadastrarProduto(int idCategoria, int idFornecedor, String nmProduto, int estoqueMin) throws SQLException {
         Produto produto = new Produto(idCategoria, idFornecedor, nmProduto, estoqueMin);
-        produtoDAO.salvar(produto);
+        ProdutoDAO.salvar(produto);
     }
 
     public List<Produto> listarProduto() throws SQLException {
         return produtoDAO.listarTodos();
     }
 
-    public boolean atualizarProduto(int idCategoria, int idFornecedor, String nmProduto, int estoqueMin) throws SQLException {
-        Produto produto = new Produto(idCategoria, idFornecedor, nmProduto, estoqueMin);
+    public boolean atualizarProduto(int idProduto, int idCategoria, int idFornecedor, String nmProduto, int estoqueMin) throws SQLException {
+        Produto produto = new Produto(idProduto, idCategoria, idFornecedor, nmProduto, estoqueMin);
         return produtoDAO.atualizar(produto);
     }
 
