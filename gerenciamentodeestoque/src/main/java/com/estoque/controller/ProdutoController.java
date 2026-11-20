@@ -13,8 +13,8 @@ public class ProdutoController {
         this.produtoDAO = new ProdutoDAO();
     }
 
-    public void cadastrarProduto(int idCategoria, int idFornecedor, String nmProduto, int qtProduto, int estoqueMin) throws SQLException {
-        Produto produto = new Produto(idCategoria, idFornecedor, nmProduto, qtProduto, estoqueMin);
+    public void cadastrarProduto(int idCategoria, int idFornecedor, String nmProduto, int estoqueMin) throws SQLException {
+        Produto produto = new Produto(idCategoria, idFornecedor, nmProduto, estoqueMin);
         produtoDAO.salvar(produto);
     }
 
@@ -22,8 +22,8 @@ public class ProdutoController {
         return produtoDAO.listarTodos();
     }
 
-    public boolean atualizarProduto(int idCategoria, int idFornecedor, String nmProduto, int qtProduto, int estoqueMin) throws SQLException {
-        Produto produto = new Produto(idCategoria, idFornecedor, nmProduto, qtProduto, estoqueMin);
+    public boolean atualizarProduto(int idCategoria, int idFornecedor, String nmProduto, int estoqueMin) throws SQLException {
+        Produto produto = new Produto(idCategoria, idFornecedor, nmProduto, estoqueMin);
         return produtoDAO.atualizar(produto);
     }
 

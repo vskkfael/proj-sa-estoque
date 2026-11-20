@@ -70,7 +70,7 @@ public class Fornecedor {
 
     private String formatarTel(String tel) {
         if(tel.length() == 11){
-            return "(" + tel.substring(0,2) + ")" + " " + tel.substring(2,3) + " " + tel.substring(3, 7) + "-" + tel.substring(7, 11);
+            return "(" + tel.substring(0,2) + ")" + " " + tel.substring(2,3) + tel.substring(3, 7) + "-" + tel.substring(7, 11);
         } else {
             return "(" + tel.substring(0,2) + ")" + " " + tel.substring(2,6) + "-" + tel.substring(6, 10);
         }

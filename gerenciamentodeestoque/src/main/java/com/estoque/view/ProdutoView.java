@@ -62,7 +62,7 @@ public class ProdutoView {
         System.out.println("Quantidade:");
         int quantidade = Integer.parseInt(scanner.nextLine());
 
-        controller.cadastrarProduto(categoria, fornecedor, produto, quantidade, categoria);
+        controller.cadastrarProduto(categoria, fornecedor, produto, quantidade);
         System.out.println("Produto cadastrado com sucesso!");
    }
 
@@ -99,13 +99,11 @@ public class ProdutoView {
         System.out.print("Novo Produto (" + produtoExistente.getNmProduto() + "): ");
         String produto = scanner.nextLine();
 
-        System.out.println("Nova Quantidade (" + produtoExistente.getQtProduto() + "): ");
-        Integer qtProduto = Integer.parseInt(scanner.nextLine());
-        if(qtProduto == null) qtProduto = produtoExistente.getQtProduto();
+        System.out.println("Nova Quantidade (" + produtoExistente.getEstoqueMin() + "): ");
+        Integer estoqueMin = Integer.parseInt(scanner.nextLine());
+        if(estoqueMin == null) estoqueMin = produtoExistente.getEstoqueMin();
 
-        Integer estoqueMin = qtProduto;
-
-        boolean sucesso = controller.atualizarProduto(categoria, fornecedor, produto, qtProduto, estoqueMin);
+        boolean sucesso = controller.atualizarProduto(categoria, fornecedor, produto, estoqueMin);
         if(sucesso) {
             System.out.println("Produto atualizado com sucesso!");
         } else {
@@ -141,7 +139,7 @@ public class ProdutoView {
                 "Categoria: " + sucessoBusca.getIdCategoria() + " | " +
                 "Fornecedor: " + sucessoBusca.getIdFornecedor() + " | " +
                 "Produto: " + sucessoBusca.getNmProduto() + " | " +
-                "Quantidade: " + sucessoBusca.getQtProduto()
+                "Quantidade: " + sucessoBusca.getEstoqueMin()
             );
         }
         controller.buscarPorID(idBusca);

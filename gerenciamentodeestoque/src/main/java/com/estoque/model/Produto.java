@@ -12,20 +12,18 @@ public class Produto {
 
     }
 
-    public Produto(Integer idProduto, Integer idCategoria, Integer idFornecedor, String nmProduto, Integer qtProduto, int estoqueMin) {
+    public Produto(Integer idProduto, Integer idCategoria, Integer idFornecedor, String nmProduto, int estoqueMin) {
         this.idProduto = idProduto;
         this.idCategoria = idCategoria;
         this.idFornecedor = idFornecedor;
         this.nmProduto = nmProduto;
-        this.qtProduto = qtProduto;
         this.estoqueMin = estoqueMin;
     }
     
-    public Produto(Integer idCategoria, Integer idFornecedor, String nmProduto, Integer qtProduto, int estoqueMin) {
+    public Produto(Integer idCategoria, Integer idFornecedor, String nmProduto, int estoqueMin) {
         this.idCategoria = idCategoria;
         this.idFornecedor = idFornecedor;
         this.nmProduto = nmProduto;
-        this.qtProduto = qtProduto;
         this.estoqueMin = estoqueMin;
     }
     
@@ -62,14 +60,6 @@ public class Produto {
         this.nmProduto = nmProduto;
     }
 
-    public Integer getQtProduto() {
-        return qtProduto;
-    }
-
-    public void setQtProduto(Integer qtProduto) {
-        this.qtProduto = qtProduto;
-    }
-
     public Integer getEstoqueMin() {
         return estoqueMin;
     }
@@ -78,4 +68,8 @@ public class Produto {
         this.estoqueMin = estoqueMin;
     }   
      
+    @Override
+    public String toString() {
+        return String.format("ID: %-2d | Categoria: %-2d | Fornecedor: %-2d | Produto: 5-80s | Situação: ", idProduto, idCategoria, idFornecedor, nmProduto, estoqueMin);
+    }
 }
