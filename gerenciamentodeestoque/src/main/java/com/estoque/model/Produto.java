@@ -5,8 +5,8 @@ public class Produto {
     Integer idCategoria;
     Integer idFornecedor;
     String nmProduto;
-    Integer qtProduto;
     Integer estoqueMin;
+    String situacao;
 
     public Produto(){
 
@@ -67,9 +67,17 @@ public class Produto {
     public void setEstoqueMin(Integer estoqueMin) {
         this.estoqueMin = estoqueMin;
     }   
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
      
     @Override
     public String toString() {
-        return String.format("ID: %-2d | Categoria: %-2d | Fornecedor: %-2d | Produto: 5-80s | Situação: ", idProduto, idCategoria, idFornecedor, nmProduto, estoqueMin);
+        return String.format("ID: %-2d | Categoria: %-2d | Fornecedor: %-2d | Produto: %-5.80s | Quantidade: %-2d | Situação: %-5.15s", idProduto, idCategoria, idFornecedor, nmProduto, estoqueMin, situacao);
     }
 }

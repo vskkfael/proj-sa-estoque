@@ -59,10 +59,10 @@ public class ProdutoView {
         System.out.print("Produto: ");
         String produto = scanner.nextLine();
 
-        System.out.println("Quantidade:");
+        System.out.print("Quantidade: ");
         int quantidade = Integer.parseInt(scanner.nextLine());
 
-        controller.cadastrarProduto(categoria, fornecedor, produto, quantidade);
+            controller.cadastrarProduto(categoria, fornecedor, produto, quantidade);
         System.out.println("Produto cadastrado com sucesso!");
    }
 
@@ -139,7 +139,8 @@ public class ProdutoView {
                 "Categoria: " + sucessoBusca.getIdCategoria() + " | " +
                 "Fornecedor: " + sucessoBusca.getIdFornecedor() + " | " +
                 "Produto: " + sucessoBusca.getNmProduto() + " | " +
-                "Quantidade: " + sucessoBusca.getEstoqueMin()
+                "Quantidade: " + sucessoBusca.getEstoqueMin() + " | " +
+                "Situação: " + sucessoBusca.getSituacao()
             );
         }
         controller.buscarPorID(idBusca);

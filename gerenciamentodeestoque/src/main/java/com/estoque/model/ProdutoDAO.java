@@ -30,26 +30,33 @@ public class ProdutoDAO {
             }
     }
 
-    public List<Produto> listarTodos() throws SQLException {
-        List<Produto> produto = new ArrayList<>();
+    public List<Produto> listarTodos() {
+    List<Produto> produtos = new ArrayList<>();
 
-        String sql = "SELECT * FROM tb_sge_produto";
+    String sql = "SELECT * FROM vw_produto_situacao ORDER BY nm_produto";
 
-        try(Connection conn = ConnectionFactory.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery()){
-                while(rs.next()){
-                    Produto p = new Produto(
-                        rs.getInt("id_produto"),
-                        rs.getInt("id_categoria"),
-                        rs.getInt("id_fornecedor"),
-                        rs.getString("nm_produto"),
-                        rs.getInt("qt_estoque_min"));
-                    produto.add(p);
+                try (Connection conn = ConnectionFactory.getConnection();
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery()) {
+
+                    while (rs.next()) {
+                        Produto p = new Produto();
+                            p.setIdProduto(rs.getInt("id_produto"));
+                            p.setIdCategoria(rs.getInt("id_categoria"));
+                            p.setIdFornecedor(rs.getInt("id_fornecedor"));
+                            p.setNmProduto(rs.getString("nm_produto"));
+                            p.setEstoqueMin(rs.getInt("estoque_atual"));
+                            p.setSituacao(rs.getString("situacao"));
+                        produtos.add(p);
+
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-            }
-        return produto;
-    }
+
+                return produtos;
+}
 
     public boolean atualizar(Produto produto) throws SQLException {
         String sql = "UPDATE tb_sge_produto SET id_categoria = ?, id_fornecedor = ?, nm_produto = ?, qt_estoque_min = ? WHERE id_produto = ?";
@@ -76,25 +83,27 @@ public class ProdutoDAO {
     }
 
     public Produto buscarPorID(int id) throws SQLException {
-        String sql = "SELECT * FROM tb_sge_produto WHERE id_produto = ?";
+        Produto p = null;
+        
+        String sql = "SELECT * FROM vw_produto_situacao WHERE id_produto = ?";
 
         try(Connection conn = ConnectionFactory.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
 
-            try(ResultSet rs = stmt.executeQuery()) {
-                if(rs.next()){
-                    return new Produto(
-                        rs.getInt("id_produto"),
-                        rs.getInt("id_categoria"),
-                        rs.getInt("id_fornecedor"),
-                        rs.getString("nm_produto"),
-                        rs.getInt("qt_estoque_min"));
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    p = new Produto();
+                    p.setIdProduto(rs.getInt("id_produto"));
+                    p.setIdCategoria(rs.getInt("id_categoria"));
+                    p.setIdFornecedor(rs.getInt("id_fornecedor"));
+                    p.setNmProduto(rs.getString("nm_produto"));
+                    p.setEstoqueMin(rs.getInt("estoque_atual"));
+                    p.setSituacao(rs.getString("situacao"));
                 }
             }
-        }
-        return null;
-    }
 
-  
+        }
+        return p;
+    }
 }
