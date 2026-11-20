@@ -43,7 +43,9 @@ public class ProdutoDAO {
                         Produto p = new Produto();
                             p.setIdProduto(rs.getInt("id_produto"));
                             p.setIdCategoria(rs.getInt("id_categoria"));
+                            p.setNmCategoria(rs.getString("nm_categoria"));
                             p.setIdFornecedor(rs.getInt("id_fornecedor"));
+                            p.setRazaoSocial(rs.getString("razao_social"));
                             p.setNmProduto(rs.getString("nm_produto"));
                             p.setEstoqueMin(rs.getInt("estoque_atual"));
                             p.setSituacao(rs.getString("situacao"));
@@ -96,7 +98,9 @@ public class ProdutoDAO {
                     p = new Produto();
                     p.setIdProduto(rs.getInt("id_produto"));
                     p.setIdCategoria(rs.getInt("id_categoria"));
+                    p.setNmCategoria(rs.getString("nm_categoria"));
                     p.setIdFornecedor(rs.getInt("id_fornecedor"));
+                    p.setRazaoSocial(rs.getString("razao_social"));
                     p.setNmProduto(rs.getString("nm_produto"));
                     p.setEstoqueMin(rs.getInt("estoque_atual"));
                     p.setSituacao(rs.getString("situacao"));

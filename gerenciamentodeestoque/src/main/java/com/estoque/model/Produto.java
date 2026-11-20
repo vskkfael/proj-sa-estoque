@@ -3,7 +3,9 @@ package com.estoque.model;
 public class Produto {
     Integer idProduto;
     Integer idCategoria;
+    String nmCategoria;
     Integer idFornecedor;
+    String razaoSocial;
     String nmProduto;
     Integer estoqueMin;
     String situacao;
@@ -75,9 +77,25 @@ public class Produto {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
+
+    public String getNmCategoria() {
+        return nmCategoria;
+    }
+
+    public void setNmCategoria(String nmCategoria) {
+        this.nmCategoria = nmCategoria;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
      
     @Override
     public String toString() {
-        return String.format("ID: %-2d | Categoria: %-2d | Fornecedor: %-2d | Produto: %-5.80s | Quantidade: %-2d | Situação: %-5.15s", idProduto, idCategoria, idFornecedor, nmProduto, estoqueMin, situacao);
+        return String.format("ID: %-2d | Categoria: %-5.60s | Fornecedor: %-5.60s | Produto: %-5.80s | Quantidade: %-2d | Situação: %-5.15s", idProduto, nmCategoria, razaoSocial, nmProduto, estoqueMin, situacao);
     }
 }
