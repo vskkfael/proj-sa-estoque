@@ -1,18 +1,11 @@
 package com.estoque;
 
-import com.estoque.view.CategoriaView;
-import com.estoque.view.FornecedorView;
-import com.estoque.view.ProdutoView;
+import com.estoque.view.LandingPage;
 
 public class Main {
     public static void main(String[] args) {
-        FornecedorView fornecedorView = new FornecedorView();
-        fornecedorView.exibirMenu();
-        
-        CategoriaView categoriaView = new CategoriaView();
-        categoriaView.exibirMenu();
+        LandingPage ladingPage = new LandingPage();
 
-        ProdutoView produtoView = new ProdutoView();
-        produtoView.exibirMenu();
+        ladingPage.menuSistema();
     }
 }
