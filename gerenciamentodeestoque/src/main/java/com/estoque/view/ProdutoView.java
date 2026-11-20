@@ -6,12 +6,15 @@ import java.util.Scanner;
 
 import com.estoque.controller.ProdutoController;
 import com.estoque.model.Produto;
+import com.estoque.model.ProdutoDAO;
 
 public class ProdutoView {
     private final ProdutoController controller;
+    private final ProdutoDAO produtoDAO;
     private final Scanner scanner;
 
     public ProdutoView() {
+        this.produtoDAO = new ProdutoDAO();
         this.controller = new ProdutoController();
         this.scanner = new Scanner(System.in);
     }
@@ -134,14 +137,7 @@ public class ProdutoView {
         if(sucessoBusca == null){
             System.out.println("ID informado não existe!");
         } else {
-            System.out.println(
-                "ID: " + sucessoBusca.getIdProduto() + " | " +
-                "Categoria: " + sucessoBusca.getIdCategoria() + " | " +
-                "Fornecedor: " + sucessoBusca.getIdFornecedor() + " | " +
-                "Produto: " + sucessoBusca.getNmProduto() + " | " +
-                "Quantidade: " + sucessoBusca.getEstoqueMin() + " | " +
-                "Situação: " + sucessoBusca.getSituacao()
-            );
+            System.out.println(sucessoBusca);
         }
         controller.buscarPorID(idBusca);
    }   
