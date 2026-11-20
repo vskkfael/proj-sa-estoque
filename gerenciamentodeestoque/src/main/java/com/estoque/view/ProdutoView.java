@@ -6,15 +6,12 @@ import java.util.Scanner;
 
 import com.estoque.controller.ProdutoController;
 import com.estoque.model.Produto;
-import com.estoque.model.ProdutoDAO;
 
 public class ProdutoView {
     private final ProdutoController controller;
-    private final ProdutoDAO produtoDAO;
     private final Scanner scanner;
 
     public ProdutoView() {
-        this.produtoDAO = new ProdutoDAO();
         this.controller = new ProdutoController();
         this.scanner = new Scanner(System.in);
     }
@@ -92,19 +89,21 @@ public class ProdutoView {
         }
 
         System.out.print("Nova Categoria (" + produtoExistente.getIdCategoria() + "): ");
-        Integer categoria = Integer.parseInt(scanner.nextLine());
-        if (categoria == null) categoria = produtoExistente.getIdCategoria();
+        String entrada = scanner.nextLine().trim();
+        int categoria = entrada.isEmpty() ? produtoExistente.getIdCategoria() : Integer.parseInt(entrada);
 
         System.out.print("Novo Fornecedor (" + produtoExistente.getIdFornecedor() + "): ");
-        Integer fornecedor = Integer.parseInt(scanner.nextLine());
-        if(fornecedor == null) fornecedor = produtoExistente.getIdFornecedor();
-
+        entrada = scanner.nextLine().trim();
+        int fornecedor = entrada.isEmpty() ? produtoExistente.getIdFornecedor() : Integer.parseInt(entrada);
+    
         System.out.print("Novo Produto (" + produtoExistente.getNmProduto() + "): ");
-        String produto = scanner.nextLine();
+        entrada = scanner.nextLine().trim();
+        String produto = entrada.isEmpty() ? produtoExistente.getNmProduto() : entrada;
 
         System.out.println("Nova Quantidade (" + produtoExistente.getEstoqueMin() + "): ");
-        Integer estoqueMin = Integer.parseInt(scanner.nextLine());
-        if(estoqueMin == null) estoqueMin = produtoExistente.getEstoqueMin();
+        entrada = scanner.nextLine().trim();
+        int estoqueMin = entrada.isEmpty() ? produtoExistente.getEstoqueMin() : Integer.parseInt(entrada);
+
 
         boolean sucesso = controller.atualizarProduto(categoria, fornecedor, produto, estoqueMin);
         if(sucesso) {
@@ -139,6 +138,7 @@ public class ProdutoView {
         } else {
             System.out.println(sucessoBusca);
         }
+        
         controller.buscarPorID(idBusca);
-   }   
+    }
 }
